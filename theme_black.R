@@ -1,7 +1,8 @@
 ## A black theme
 require(ggplot2)
-require(sysfonts) ## for google fonts
+require(showtext) ## for google fonts
 font_add_google("Raleway")
+showtext_auto()
 
 theme_black <- function (base_size = 12, 
                        base_family = "Raleway", 

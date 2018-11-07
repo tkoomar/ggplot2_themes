@@ -2,8 +2,9 @@
 
 require(ggplot2)
 require(dplyr)
-# require(sysfonts) ## for google fonts
+# require(showtext) ## for google fonts
 # font_add_google("Comfortaa")
+# showtext_auto()
 
 new_theme <- function (base_size = 11, 
                        base_family = "", 
