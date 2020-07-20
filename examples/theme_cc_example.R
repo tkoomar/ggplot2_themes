@@ -1,4 +1,4 @@
-source("../theme_cc.R")
+source(here::here("theme_cc.R"))
 
 require(dplyr)
 require(cowplot)
@@ -19,7 +19,7 @@ plot_b <- diamonds %>%
   head(50) %>%
   ggplot(aes(x = depth, y = table, color = color)) + 
   scale_color_brewer(palette = "Spectral") + 
-  geom_point(pch = 18, size = 8) +
+  geom_point(pch = 8, size = 5) +
   labs(tag = "B",
        title = "theme_cc()",
        subtitle = "@TannerKoomar"
@@ -46,6 +46,6 @@ plot_ab <- plot_grid(plotlist = list(plot_a, plot_b), nrow = 2)
 
 plot_compound <- plot_grid(plotlist = list(plot_ab, plot_c), nrow = 1, rel_widths = c(1.5,1)) 
 
-png("theme_cc.png", width = 1000, height = 800)
-plot_compound
-dev.off()
+ggsave(filename = here::here("examples/theme_cc.png"),
+       plot = plot_compound, 
+       width = 10, height = 8)

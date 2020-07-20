@@ -1,4 +1,4 @@
-source("../theme_black.R")
+source(here::here("theme_black.R"))
 
 require(dplyr)
 require(cowplot)
@@ -14,7 +14,7 @@ plot_a <- ggplot(filter(diamonds, cut != "Fair"),
   ) +
   geom_density(color = NA, alpha = 0.75) + 
   facet_wrap(~ cut) + 
-  theme_black()
+  theme_black(24)
 
 plot_b <- diamonds %>% 
   head(50) %>%
@@ -25,7 +25,7 @@ plot_b <- diamonds %>%
        title = "theme_black()",
        subtitle = "@TannerKoomar"
   ) +
-  theme_black()
+  theme_black(24)
 
 
 plot_c <- diamonds %>% 
@@ -38,7 +38,7 @@ plot_c <- diamonds %>%
        title = "theme_black()",
        subtitle = "@TannerKoomar"
   ) + 
-  theme_black() + 
+  theme_black(24) + 
   theme(legend.position = 'bottom',
         axis.text.x.bottom = element_text(angle = 30, hjust = 1))
 
@@ -46,6 +46,6 @@ plot_ab <- plot_grid(plotlist = list(plot_a, plot_b), nrow = 2)
 
 plot_compound <- plot_grid(plotlist = list(plot_ab, plot_c), nrow = 1, rel_widths = c(1.5,1)) 
 
-png("theme_black.png", width = 1000, height = 800)
-plot_compound
-dev.off()
+ggsave(filename = here::here("examples/theme_black.png"),
+       plot = plot_compound, 
+       width = 10, height = 8)

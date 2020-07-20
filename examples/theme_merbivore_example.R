@@ -1,4 +1,4 @@
-source("../theme_merbivore.R")
+source(here::here("theme_merbivore.R"))
 
 require(dplyr)
 require(cowplot)
@@ -45,6 +45,6 @@ plot_ab <- plot_grid(plotlist = list(plot_a, plot_b), nrow = 2)
 
 plot_compound <- plot_grid(plotlist = list(plot_ab, plot_c), nrow = 1, rel_widths = c(1.5,1)) 
 
-png("theme_merbivore.png", width = 1000, height = 800)
-plot_compound
-dev.off()
+ggsave(filename = here::here("examples/theme_merbivore.png"),
+       plot = plot_compound, 
+       width = 10, height = 8)
